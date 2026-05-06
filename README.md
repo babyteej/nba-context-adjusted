@@ -150,6 +150,12 @@ All are defensible starting points. Future work could learn optimal values by re
 
 ---
 
+## Validation note
+
+SQS and SQS_ca produce nearly identical correlations against `context_adjusted_rating` (r=0.553 vs r=0.556). This is expected and does not indicate the correction is ineffective. SQS_ca is designed to produce a *fairer* ranking by removing team and role inflation — not a more predictive one. Validating a context-corrected metric against `e_net_rating` (even the adjusted version) will naturally show little improvement because the target variable itself carries residual team effects. The value of SQS_ca is in the ranking corrections it produces — players like Devin Vassell moving up 10 spots on a bad team, or Sam Hauser moving down 4 spots on the best team in the league — not in its correlation with any single outcome metric.
+
+---
+
 ## Honest limitations
 
 **Name matching:** The three input files are merged on `player_name` string. Players with special characters in names (Dončić, Jokić) may fail to merge if encoding differs across files. Check merge counts in terminal output after running.
