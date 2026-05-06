@@ -68,9 +68,14 @@ Low entropy (concentrated diet) → penalty applied. High entropy (diverse diet)
 
 ### Combined — PAE_adj
 
+```python
+PAE_adj = PAE × assisted_rate_weight × entropy_weight × context_weight
 ```
-PAE_adj = PAE × assisted_rate_weight × entropy_weight
-```
+
+Key implementation details:
+- Assisted rate and entropy penalties are applied as **squared** weights, meaning extreme cases (0.94 assisted rate, 0.29 entropy) are penalised significantly harder than moderate cases
+- Context weight is **clipped at zero for negative premiums** — players on bad teams do not receive a PAE boost, only players on good teams receive a penalty
+- A **role score** is computed as `0.5 × assisted_rate + 0.5 × (1 - zone_entropy_norm)`. Players above 0.75 are flagged as `sheltered_finisher = True` in the output CSV — their SQS_ca should be interpreted with the caveat that their shooting contribution is heavily role-dependent regardless of adjusted rank
 
 ### Final output — SQS_ca
 
