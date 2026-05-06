@@ -4,6 +4,12 @@ The third in a three-part portfolio series on NBA player evaluation. This repo c
 
 ---
 
+## Visualisations
+
+![Context Analysis](assets/context_analysis.png)
+
+---
+
 ## The arc
 
 **[nba-analytics](https://github.com/babyteej/nba-analytics)**
