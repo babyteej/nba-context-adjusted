@@ -137,10 +137,11 @@ outputs/
 
 | Constant | Default | Meaning |
 |---|---|---|
-| `K_ASSISTED` | 0.40 | How much a 100% assisted player's PAE is discounted |
-| `K_ENTROPY` | 0.30 | How much a zero-entropy player's PAE is discounted |
+| `K_ASSISTED` | 0.40 | How much a 100% assisted player's PAE is discounted — applied as a squared penalty for extreme cases |
+| `K_ENTROPY` | 0.30 | How much a zero-entropy player's PAE is discounted — applied as a squared penalty for extreme cases |
+| `K_CONTEXT` | 0.25 | How much team context premium reduces PAE for players on good teams — gated by zone entropy so rim-runners on good teams are penalised, not boosted |
 
-Both are defensible starting points. Future work could learn optimal values by regressing against context-adjusted e_net_rating.
+All are defensible starting points. Future work could learn optimal values by regressing against context-adjusted e_net_rating.
 
 ---
 
